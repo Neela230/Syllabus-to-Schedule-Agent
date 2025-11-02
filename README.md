@@ -4,7 +4,7 @@ Department: Civil Engineering
 
 # Syllabus-to-Schedule (S2S) Agent
 
-The S2S Agent ingests course syllabi and announcements, extracts graded work, plans milestone tasks, and exports a ready-to-use study schedule. It combines Retrieval-Augmented Generation (RAG), a LoRA-tuned extractor model, and a heuristic/LLM-backed planner to automate academic workflow management.
+The S2S Agent ingests course syllabus and announcements, extracts graded work, plans milestone tasks, and exports a ready-to-use study schedule. It combines Retrieval-Augmented Generation (RAG), a LoRA-tuned extractor model, and a heuristic/LLM-backed planner to automate academic workflow management.
 
 ## Quickstart
 

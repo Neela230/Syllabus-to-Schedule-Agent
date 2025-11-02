@@ -1,0 +1,73 @@
+Metadata-Version: 2.4
+Name: s2s-agent
+Version: 0.1.0
+Summary: Syllabus-to-Schedule (S2S) Agent
+Author-email: S2S Agent Team <team@example.com>
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: typer>=0.9.0
+Requires-Dist: pdfplumber>=0.10.3
+Requires-Dist: beautifulsoup4>=4.12.2
+Requires-Dist: chromadb>=0.4.22
+Requires-Dist: sentence-transformers>=2.2.2
+Requires-Dist: transformers>=4.37.0
+Requires-Dist: peft>=0.7.1
+Requires-Dist: datasets>=2.14.0
+Requires-Dist: torch>=2.1.0
+Requires-Dist: pydantic<2,>=1.10
+Requires-Dist: dateparser>=1.2.0
+Requires-Dist: streamlit>=1.25.0
+Requires-Dist: pandas>=1.5.0
+Requires-Dist: tabulate>=0.9.0
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: tqdm>=4.65.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.4; extra == "dev"
+Requires-Dist: pytest-mock>=3.11; extra == "dev"
+Dynamic: license-file
+
+Name: __________________________
+University: ____________________
+Department: ____________________
+
+# Syllabus-to-Schedule (S2S) Agent
+
+The S2S Agent ingests course syllabi and announcements, extracts graded work, plans milestone tasks, and exports a ready-to-use study schedule. It combines Retrieval-Augmented Generation (RAG), a LoRA-tuned extractor model, and a heuristic/LLM-backed planner to automate academic workflow management.
+
+## Quickstart
+
+1. **Create environment**
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   make setup
+   ```
+
+2. **Run end-to-end on sample data**
+   ```bash
+   make run
+   ```
+
+3. **Inspect outputs**
+   - `out/calendar.ics` – import into Google Calendar (“Settings & Import” → “Import”).
+   - `out/tasks.csv` – task table for spreadsheets or PM tools.
+
+4. **Open UI (optional)**
+   ```bash
+   make ui
+   ```
+
+## Project Overview
+
+- **Ingest**: Parse PDF, HTML, and text syllabi into normalized documents.
+- **Index**: Build a Chroma semantic index with MiniLM embeddings.
+- **Extract**: Apply a LoRA-adapted `t5-small` to generate structured assignment JSON.
+- **Validate**: Clean and normalize fields with Pydantic + dateparser.
+- **Plan**: Produce milestone tasks with dependencies and duration estimates.
+- **Execute**: Backward-schedule milestones and export ICS/CSV/SQLite.
+- **Evaluate**: Field EM, micro-F1, date accuracy, and end-to-end schedule checks.
+
+## Repository Map
+
+See `docs/architecture.md` for a deep dive and `docs/ds_report.md` for the ML workflow.

@@ -1,0 +1,2 @@
+[console_scripts]
+s2s-agent = s2s.cli:app

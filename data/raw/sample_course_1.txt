@@ -1,0 +1,42 @@
+Course: Advanced Machine Learning
+Instructor: Dr. Rivera
+Semester: Spring 2025
+
+Assignment Schedule:
+1. Homework 1 (Foundations Review)
+   - Released: January 20, 2025
+   - Due: February 3, 2025 at 11:59 PM
+   - Deliverables: PDF solutions, Jupyter notebook with code.
+   - Weight: 7%
+
+2. Kaggle Warm-up Challenge
+   - Released: January 27, 2025
+   - Due: February 17, 2025 at 11:59 PM
+   - Deliverables: Kaggle submission CSV, one-page reflection.
+   - Weight: 10%
+
+3. Midterm Project Proposal
+   - Released: February 10, 2025
+   - Due: March 3, 2025 at 5:00 PM
+   - Deliverables: Proposal PDF (3 pages), teammate roles table.
+   - Weight: 12%
+
+4. Midterm Presentation
+   - Presentation window: March 10, 2025 2:00 PM
+   - Deliverables: Slide deck (PDF), demo video (5 minutes max).
+   - Weight: 18%
+
+5. Final Project Deliverables
+   - Code Freeze: April 21, 2025 at 11:59 PM
+   - Due: April 28, 2025 at 11:59 PM
+   - Deliverables: Repository link, technical report (8 pages), poster PDF.
+   - Weight: 28%
+
+6. Peer Feedback Forms
+   - Due: April 30, 2025 at 6:00 PM
+   - Deliverables: Two peer evaluation forms via LMS.
+   - Weight: 5%
+
+Notes:
+- All submissions via Canvas unless noted otherwise.
+- Late policy: 48-hour grace period with 10% penalty per day.

@@ -1,6 +1,6 @@
-Name: __________________________
-University: ____________________
-Department: ____________________
+Name: Neela
+University: IIT Kanpur
+Department: Civil Engineering
 
 # Syllabus-to-Schedule (S2S) Agent
 

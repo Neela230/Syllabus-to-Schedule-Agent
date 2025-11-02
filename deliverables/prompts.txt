@@ -1,0 +1,43 @@
+1. what is this?
+2. but you have made no files, done no implementation, can you implement this instead of giving entire thing in chat please
+3. how do you propose we make dataset? do we make a generator or do we make dataset ourself is there dataset available? CHECK "DS Internship Assignment.pptx.pdf" for any link to dataset. also does the assignment ask to train a model?
+4. so what do you suggest we do next?
+5. can you do the next step please
+6. (.venv) belief@belief:~/Desktop/Neela/s2s-agent$ python3 training/collate.py
+   python3 training/train_lora_t5.py
+
+   Generating train split: 50 examples [00:00, ...]
+   ...
+   TypeError: TrainingArguments.__init__() got an unexpected keyword argument 'evaluation_strategy'
+7. try again or tell me how to fix the problem
+8. how do i check if netweok is accessible or not
+9. I tried running it, it gave following result belief@belief:~$ curl -I https://pypi.org/simple/pip/ (HTTP/2 200 ... output)
+10. belief@belief:~$ curl -I https://files.pythonhosted.org (HTTP/2 200 ... output)
+11. lets do next step
+12. so what to do next?
+13. do it
+14. (.venv) belief@belief:~/Desktop/Neela/s2s-agent$ pip install pytest
+    ...
+    FAILED tests/test_extract.py::test_rule_based_extractor_basic - AssertionError ...
+15. I have done make run. it gave following output
+    ```
+    (.venv) belief@belief:~/Desktop/Neela/s2s-agent$ make run
+    python -m s2s.cli run --project default
+    Ingested ...
+    Pipeline completed.
+    ```
+16. I do have any syllabus pdfs please generated a few tex files I will convert it to pdf and drop it in data/raw/ the we will move on to next setep
+17. check folder if everything looks good let move to next step[
+18. I don't know much about the project or what implementation you have done, I was in sort of autopilot mode. can you explain what the project is about and then tell me brief implementation detail. then explan these three next steps in detail as to what should i do and what are the implicaitons
+19. tell me what part you can do and for what part of it do you need me and what should I do. I will do that and handover the rest to you
+20. so what did we do and how is it workign?
+21. is the project done and please explain me how to use this
+22. I have done make run. it gave following output (.venv) ... (duplicate confirmation of pipeline completion)
+23. the input files are different. why is the pipeling considering them as same? go through @data/raw and @out/ and see what is going on
+24. please do this for me  1. Inspect the outputs:
+      - Open out/default_assignments.json to see the raw extraction per syllabus.
+      - Check out/default_plan.json, out/tasks.csv, and import out/calendar.ics into a calendar to confirm each syllabus produced its own milestone chain.
+25. i see the output is much better but aftee breif review of csv output i can see the fields are populated uncorrectly can you go through the output file and see what kind of mistakes pipline has done and fix them
+26. okay Output is much better than before but many course name are still missing, same assignment tasks are repeasted multiple times. go through the outputs again match them with input files see why certain file course name are not showing up in output. why multiple entries of same assignemets are generate see. do multiple runs if you need to go through output each time and improve it itteratively.  at the end all assignemnts and course entries should be correct (and distinct in relevant columns). the entries in output should be in coherence with relevant input files (so refer to input files at the time of checking and verifying and compare output with it). repeat this fix cycle until output seems correct and coherent
+27. make sure implement is coherent with instruction give in "DS Internship Assignment.pptx.pdf"
+28. if everything looks fine, go through "DS Internship Assignment.pptx.pdf" and make final deliverable folder with report (latex file) which includes everything required, a readme file and project files. add anything else that might be required. finally make sure project files are not touched as in nothing breaks. one of the deliverables is list of prompts I have given to you can you extract that and save that as well in deliverable.

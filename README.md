@@ -1,6 +1,6 @@
-Name: Neela
-University: IIT Kanpur
-Department: Civil Engineering
+Name: Neela  
+University: IIT Kanpur  
+Department: Civil Engineering  
 
 # Syllabus-to-Schedule (S2S) Agent
 

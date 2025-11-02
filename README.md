@@ -23,7 +23,12 @@ The S2S Agent ingests course syllabi and announcements, extracts graded work, pl
 3. **Inspect outputs**
    - `out/calendar.ics` – import into Google Calendar (“Settings & Import” → “Import”).
    - `out/tasks.csv` – task table for spreadsheets or PM tools.
+  
 
+4. **Open UI (optional)**
+   ```bash
+   make ui
+   ```
 
 ## Project Overview
 

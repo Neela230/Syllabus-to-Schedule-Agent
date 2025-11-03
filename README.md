@@ -103,6 +103,14 @@ The S2S Agent ingests course syllabus and announcements, extracts graded work, p
 - **Execute**: Backward-schedule milestones and export ICS/CSV/SQLite.
 - **Evaluate**: Field EM, micro-F1, date accuracy, and end-to-end schedule checks.
 
+## Deliverables
+
+The following materials demonstrate the functionality, workflow, and outcomes of the S2S Agent system.
+All files are accessible via Google Drive for transparency and reproducibility.  
+- **🎥 [Executing Pipeline Using Terminal (Google Drive)](https://drive.google.com/file/d/1wO58tH00z7MEMjrD_C4KjN0ZIxPXmAJR/view?usp=sharing)**
+- **🎥 [UI Showcase (Google Drive)](https://drive.google.com/file/d/1MdMbjqm5gn_Il3xRqSGEeIaTLfgwOmdY/view?usp=drive_link)**
+
+
 ## Repository Map
 
-See `docs/architecture.md` for a deep dive and `docs/ds_report.md` for the ML workflow.
+See 'docs/architecture.md` for a deep dive and `docs/ds_report.md` for the ML workflow.

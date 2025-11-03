@@ -30,6 +30,69 @@ The S2S Agent ingests course syllabus and announcements, extracts graded work, p
    make ui
    ```
 
+## System Requirements
+
+- **Operating System**
+
+1. Windows 10 / 11, Ubuntu 20.04 +, or macOS 12 +
+2. Works on any OS supported by Python ≥ 3.9
+   
+- **Python Environment**  
+
+   Python Version: ≥ 3.9 (recommended 3.10 – 3.11)
+
+- **Network & API Access**
+
+1. Internet connection required for installing dependencies and downloading pretrained models
+2. No external API keys required by default (only if integrating optional external LLMs)
+
+- **Optional Tools**
+
+1. VS Code or PyCharm for IDE support
+2. Git for cloning and version control
+
+## Libraries Used
+
+- **Core ML & NLP**
+
+1. torch — PyTorch backend for model training/inference
+2. transformers — for pretrained and LoRA-tuned extractor models
+3. peft — parameter-efficient fine-tuning support
+4. sentence-transformers — MiniLM embeddings for semantic indexing
+
+- **Data Handling & Validation**
+
+1. pandas — structured task data and CSV export
+2. pydantic — schema validation and normalization
+3. dateparser — natural-language date parsing
+
+- **Parsing**
+
+1. pdfplumber — PDF syllabus text extraction
+2. beautifulsoup4 + lxml — HTML syllabus parsing
+
+- **Retrieval & Storage**
+
+1. chromadb — vector store for RAG (Retrieval-Augmented Generation)
+2. sqlite3 — lightweight local schedule database
+
+- **Interface & Logging**
+
+1. typer — CLI interface
+2. streamlit — web UI
+3. loguru — clean logging
+4. python-dotenv — environment variable management
+
+- **Export & Output**
+
+1. ics / icalendar — generate calendar files
+2. csv / pandas — export schedules as CSV
+
+- **Testing**
+
+1. pytest — for unit and integration tests
+
+
 ## Project Overview
 
 - **Ingest**: Parse PDF, HTML, and text syllabi into normalized documents.

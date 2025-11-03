@@ -20,12 +20,10 @@
     ...
     FAILED tests/test_extract.py::test_rule_based_extractor_basic - AssertionError ...
 15. I have done make run. it gave following output
-    ```
     (.venv) belief@belief:~/Desktop/Neela/s2s-agent$ make run
     python -m s2s.cli run --project default
     Ingested ...
     Pipeline completed.
-    ```
 16. I do have any syllabus pdfs please generated a few tex files I will convert it to pdf and drop it in data/raw/ the we will move on to next setep
 17. check folder if everything looks good let move to next step[
 18. I don't know much about the project or what implementation you have done, I was in sort of autopilot mode. can you explain what the project is about and then tell me brief implementation detail. then explan these three next steps in detail as to what should i do and what are the implicaitons
@@ -41,3 +39,16 @@
 26. okay Output is much better than before but many course name are still missing, same assignment tasks are repeasted multiple times. go through the outputs again match them with input files see why certain file course name are not showing up in output. why multiple entries of same assignemets are generate see. do multiple runs if you need to go through output each time and improve it itteratively.  at the end all assignemnts and course entries should be correct (and distinct in relevant columns). the entries in output should be in coherence with relevant input files (so refer to input files at the time of checking and verifying and compare output with it). repeat this fix cycle until output seems correct and coherent
 27. make sure implement is coherent with instruction give in "DS Internship Assignment.pptx.pdf"
 28. if everything looks fine, go through "DS Internship Assignment.pptx.pdf" and make final deliverable folder with report (latex file) which includes everything required, a readme file and project files. add anything else that might be required. finally make sure project files are not touched as in nothing breaks. one of the deliverables is list of prompts I have given to you can you extract that and save that as well in deliverable.
+29. go through s2s-agent/deliverables/report.pdf and see if whatever is implemented from follwoing in our project is reflected in report if not make a new latex file with additional details and give it to me.
+30. go through s2s-agent/deliverables/report.pdf and see if whatever is implemented from follwoing in our project is reflected in report if not make a new latex file with additional details and give it to me. (requirements block)
+31. do i submit entire @s2s-agent directory?
+32. okay can you initialize a git repo over here and add files to the repo that way I can push it to remote easily dont forget to add enviroment and .codex etc to .gitignore
+33. give me a good small description of project under 350 character
+34. can you push it to following repo "git remote add origin https://github.com/Neela230/Syllabus-to-Schedule-Agent.git"
+35. belief@belief:~/Desktop/Neela$ git remote add origin ...
+36. have you copied all the deliverables in the directory and added it to git repo then?
+37. go through deliverables/ and see if all report pdf prompts and readme file are in project folder (repo)
+38. go through s2s-agent/deliverables/report.pdf ... update report
+39. go through s2s-agent/deliverables/report.pdf ... restatement
+40. how do i generate this PAT
+41. go through s2s-agent/deliverables/report.pdf ... make new latex file

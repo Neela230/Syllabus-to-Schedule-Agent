@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{longtable}
+
+\title{Syllabus-to-Schedule (S2S) Agent\\Final Report for DS Internship Assignment}
+\author{Prepared by: belief}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Overview}
+The Syllabus-to-Schedule (S2S) agent ingests syllabi (PDF/HTML/txt), reasons over the content to extract structured assignments with a LoRA-tuned \texttt{t5-small} model, plans milestone tasks, and executes exports (ICS, CSV, SQLite). This end-to-end reason $\rightarrow$ plan $\rightarrow$ execute pipeline aligns with the internship brief.
+
+\section{Architecture Summary}
+\begin{description}[leftmargin=1.3cm]
+  \item[Ingest] \texttt{pdfplumber} / \texttt{BeautifulSoup} normalise files into \texttt{Document} objects (\texttt{src/s2s/ingest/}).
+  \item[RAG] MiniLM embeddings stored in ChromaDB (\texttt{src/s2s/rag/index.py}) for retrieval support during planning.
+  \item[Extraction] LoRA-adapted \texttt{t5-small} plus robust rule-based fallback emit per-assignment \texttt{AssignmentRecord}s (\texttt{src/s2s/extract/}).
+  \item[Validation] \texttt{pydantic}+\texttt{dateparser} enforce schema and ISO datetimes (\texttt{src/s2s/schemas.py}, \texttt{src/s2s/extract/validate.py}).
+  \item[Planning] Heuristic TaskPlanner (optional LLM) builds 2--5 milestone tasks with dependencies (\texttt{src/s2s/plan/planner.py}).
+  \item[Execution] Scheduler backfills timelines; exporters create ICS/CSV/SQLite (\texttt{src/s2s/execute/}).
+  \item[Interface] Typer CLI orchestrates stages; Streamlit UI previews results (\texttt{src/s2s/cli.py}, \texttt{ui/app.py}).
+  \item[Logging] All prompts/responses recorded in \texttt{logs/interactions.log}.
+\end{description}
+
+\section{Data \& Training}
+\begin{itemize}
+  \item \textbf{Seed dataset:} 50 hand-labelled syllabus snippets (\texttt{training/data/seed.jsonl}).
+  \item \textbf{Synthetic dataset:} 150 deterministic examples (\texttt{training/make\_synth.py}).
+  \item \textbf{Collation:} \texttt{training/collate.py} builds HF dataset splits.
+  \item \textbf{Fine-tuning:} \texttt{training/train\_lora\_t5.py} (LoRA $r=16$, $\alpha=32$, dropout 0.05, lr $2\times10^{-4}$, batch 4, epochs 5). We chose \texttt{t5-small}+LoRA for syllabus-specific extraction accuracy while keeping the adapter lightweight.
+  \item \textbf{Evaluation:} \texttt{training/eval\_extraction.py} reports field exact match, deliverable micro-F1, and mean absolute due-date error (hours) to quantify reliability.
+\end{itemize}
+
+\section{Usage}
+\subsection{Setup}
+\begin{enumerate}
+  \item \texttt{python3 -m venv .venv}
+  \item \texttt{source .venv/bin/activate}
+  \item \texttt{pip install -e .}
+\end{enumerate}
+
+\subsection{Pipeline}
+\begin{enumerate}
+  \item Add syllabus files to \texttt{data/raw/}.
+  \item Run \texttt{make run} (ingest $\rightarrow$ index $\rightarrow$ extract $\rightarrow$ plan $\rightarrow$ export).
+  \item Inspect \texttt{out/} (\texttt{default\_assignments.json}, \texttt{default\_plan.json}, \texttt{tasks.csv}, \texttt{calendar.ics}, \texttt{tasks.db}).
+\end{enumerate}
+
+\subsection{Optional}
+\begin{itemize}
+  \item \texttt{make ui} for Streamlit preview/export.
+  \item \texttt{pytest} for regression tests.
+  \item \texttt{python3 training/train\_lora\_t5.py} to retrain adapters.
+\end{itemize}
+
+\section{Verification Status}
+\begin{itemize}
+  \item Latest run produced 24 coherent assignments across four syllabi (distinct titles, courses, due dates).
+  \item ICS/CSV exports align with each source document.
+  \item \texttt{pytest} passes (warnings only from UTC timestamp deprecation).
+\end{itemize}
+
+\section{Requirement Coverage}
+\begin{longtable}{p{0.32\textwidth}p{0.61\textwidth}}
+\textbf{Reason--Plan--Execute} & Extraction interprets syllabus text (reason), TaskPlanner decomposes work (plan), scheduler/exporters materialise calendars (execute). \\
+\textbf{Fine-Tuned Model} & LoRA-tuned \texttt{t5-small} integrated via \texttt{AssignmentExtractor}; chosen to specialise on academic phrasing while staying lightweight. \\
+\textbf{Evaluation Metrics} & \texttt{training/eval\_extraction.py} measures field EM, deliverable micro-F1, and due-date error. \\
+\textbf{Multi-Agent Collaboration} (optional) & Planner and Executor operate as cooperating agents handling task decomposition and execution. \\
+\textbf{External Integrations} (optional) & Chroma RAG index (MiniLM embeddings) provides retrieval; CLI/Streamlit deliver user-facing tools. \\
+\textbf{User Interface} (optional) & Typer CLI for scripted workflows; Streamlit UI for interactive review/export. \\
+\end{longtable}
+
+\section{Deliverables Map}
+\begin{longtable}{p{0.23\textwidth}p{0.70\textwidth}}
+Source code & Repository root (installable package, tests, UI). \\
+Architecture doc & \texttt{docs/architecture.md}. \\
+Data science report & \texttt{docs/ds\_report.md}. \\
+Fine-tuning scripts & \texttt{training/*.py}, datasets in \texttt{training/data/}. \\
+Interaction logs & \texttt{logs/interactions.log}. \\
+Prompt history & \texttt{deliverables/prompts.txt}. \\
+Final report & This \texttt{report.tex}. \\
+Deliverables README & \texttt{deliverables/README.md}. \\
+Exports & \texttt{out/} (ICS, CSV, JSON, SQLite). \\
+\end{longtable}
+
+\section{Future Work}
+\begin{itemize}
+  \item Extend extraction to capture rehearsal vs final submissions when both are present.
+  \item Load LoRA adapters during evaluation for quantitative reporting on tuned model performance.
+  \item Add confidence calibration and retrieval-backed planner prompts for ambiguous assignments.
+\end{itemize}
+
+\section{References}
+\begin{itemize}
+  \item \emph{DS Internship Assignment.pptx.pdf}, project briefing.
+  \item Anthropic, \emph{Building Effective Agents}, referenced design guidance.
+\end{itemize}
+
+\end{document}
